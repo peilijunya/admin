@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+</head>
+<body>
+    <script src="/javascripts/jquery-1.11.0.js"></script>
+    <div class="container">
+        
+        <div class="panel panel-info">
+              <div class="panel-heading">
+                    <h3 class="panel-title">商品列表</h3>
+              </div>
+              <div class="panel-body">
+                    商品列表
+                    
+                    <a href="new" class="btn btn-info">新增</a>
+                    
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>商品编号</th>
+                                <th>商品名称</th>
+                                <th>商品价格</th>
+                                <th>商品图片</th>
+
+                                <th>商品描述</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                                <%productData.forEach((item,index)=>{%>
+                                     <tr>
+                                    <td><%=(index+1)%></td>
+                                    <td><%=item.pname%></td>
+                                    <td><%=item.pprice%></td>
+                                    <td> <img
+                                        src="<%= item.pimg %>"
+                                       onerror="this.src='/images/4.jpg'"
+
+                                        style="width:30px"
+                                      />
+                      </td>
+
+                                    <td><%=item.pdesc%></td>
+                                    <td>
+                                        <a href="edit?id=<%=item.id%>" class="btn btn-info">修改</a>
+                                       
+                                       <button type="button" class="btn btn-danger delBtn" data-id="<%=item.id%>">删除</button>
+                                       
+                                    </td>
+                                    </tr>
+                                <%})%>
+                                
+                           
+                        </tbody>
+                    </table>
+                    
+                    
+              </div>
+        </div>
+        
+    </div>
+    <script>
+        $(function(){
+            $('.delBtn').click(function(){
+                 $.ajax({
+                type:"delete",
+                url:"del/"+$(this).attr('data-id'),
+                success:function(resa){
+                    if(resa.code==1){
+                        location.href='list'
+                    }else{
+                        alert('删除失败');
+                    }
+                    // console.log(res);
+                    // alert(res);
+
+                }
+
+            })
+        })
+           
+           
+                
+
+    })
+        
+
+    </script>
+    
+</body>
+</html>

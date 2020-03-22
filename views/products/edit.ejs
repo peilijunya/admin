@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增列表</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+</head>
+<body>
+    
+    <div class="contaniner">
+     
+        <div class="panel panel-info">
+              <div class="panel-heading">
+                    <h3 class="panel-title">编辑商品</h3>
+              </div>
+              <div class="panel-body">
+                    
+                    <form action="edit/<%=id%>" method="POST" role="form">
+                        <legend>请填写商品信息</legend>
+                    
+                        <div class="form-group">
+                            <label for="">商品名称</label>
+                            <input type="text" class="form-control" id="" placeholder="Input field" name="pname" value="<%=pname%>">
+                        </div>
+                       <div class="form-group">
+                           <label for="">商品价格</label>
+                           <input type="text" class="form-control" id="" placeholder="Input field" name="pprice" value="<%=pprice%>">
+                       </div>
+                       <div class="form-group">
+                           <label for="">商品描述</label>
+                           <input type="text" class="form-control" id="" placeholder="Input field" name="pdesc" value="<%=pdesc%>">
+                       </div>
+                    
+                        
+                    
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </form>
+                    
+              </div>
+        </div>
+        
+   
+       </div>
+</body>
+</html>

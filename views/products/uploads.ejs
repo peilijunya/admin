@@ -1,0 +1,25 @@
+<script src="/javascripts/jquery-1.11.0.js"></script>
+<input type="file" id="img">
+<input type="button" value="提交" class="btn">
+<script>
+    $(function(){
+        $('.btn').click(function(){
+            let formData=new FormData();
+            formData.append('awr',$('#img')[0].files[0]);
+            console.log($('#img')[0].files[0]);
+            $.ajax(
+        {
+            type:'post',
+            url:'/products/upload',
+            data:formData,
+            cache:false,
+            processData:false,
+            contentType:false,
+            success:function(data){
+                console.log(data);
+            }
+
+        })
+    })
+})
+</script>
